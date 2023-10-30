@@ -1,0 +1,28 @@
+﻿
+@model List<Entities.Concrete.Category>
+@{
+    ViewData["Title"] = "Index";
+}
+<a class="btn btn-primary" href="/AdminCategory/Create">Katagori Ekle</a>
+
+<table class="table table-bordered">
+    <tr>
+        <th>Ad</th>
+        <th>Açıklama</th>
+        <th>Sil</th>
+        <th>Güncelle</th>
+
+    </tr>
+    @foreach (var item in Model)
+    {
+        <tr>
+            <td>@item.Name</td>
+            <td>@item.Descripiton</td>
+            <td>@Html.ActionLink("Sil", "Delete", new { id = item.ID }, new { @class = "btn btn-danger", onclick = "return confirm('Silmek istiyor musunuz?')" })</td>
+            @*<td><a class="btn btn-danger" href="/AdminCategory/Delete/@item.ID"></a></td>*@ @*yukarıdakini bir farklı kullanış şekli*@
+            <td>@Html.ActionLink("Güncelle", "Update", new { id = item.ID }, new { @class = "btn btn-primary", onclick = "return confirm('Güncellemek istiyormusunuz?')" })</td>
+
+        </tr>
+    }
+</table>
+
